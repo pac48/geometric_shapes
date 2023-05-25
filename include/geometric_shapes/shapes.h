@@ -398,6 +398,8 @@ public:
 
   /** \brief The type of the shape, as a string */
   static const std::string STRING_NAME;
+  std::string config;
+  std::vector<float> weights;
 
   Neural* clone() const override;
   void print(std::ostream& out = std::cout) const override;

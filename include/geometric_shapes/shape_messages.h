@@ -34,6 +34,7 @@
 #include <shape_msgs/msg/solid_primitive.hpp>
 #include <shape_msgs/msg/mesh.hpp>
 #include <shape_msgs/msg/plane.hpp>
+#include <shape_msgs/msg/network.hpp>
 #include <boost/variant.hpp>
 
 namespace shapes

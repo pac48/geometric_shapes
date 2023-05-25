@@ -42,6 +42,7 @@ const std::string Cone::STRING_NAME = "cone";
 const std::string Mesh::STRING_NAME = "mesh";
 const std::string Plane::STRING_NAME = "plane";
 const std::string OcTree::STRING_NAME = "octree";
+const std::string Neural::STRING_NAME = "network";
 
 std::ostream& operator<<(std::ostream& ss, ShapeType type)
 {
@@ -70,6 +71,9 @@ std::ostream& operator<<(std::ostream& ss, ShapeType type)
       break;
     case OCTREE:
       ss << OcTree::STRING_NAME;
+      break;
+    case NEURAL:
+      ss << Neural::STRING_NAME;
       break;
     default:
       ss << "impossible";
@@ -635,5 +639,8 @@ Neural* Neural::clone() const
 {
   CONSOLE_BRIDGE_logWarn("Neural cannot cloned");
   return nullptr;
+}
+Neural::Neural()
+{
 }
 } /* namespace shapes */

@@ -111,6 +111,23 @@ Shape* constructShapeFromMsg(const shape_msgs::msg::SolidPrimitive& shape_msg)
   return shape;
 }
 
+Shape* constructShapeFromMsg(const shape_msgs::msg::Network& neural_msg)
+{
+  if (neural_msg.config.data.empty())
+  {
+    CONSOLE_BRIDGE_logWarn("Neural object has empty config");
+    return nullptr;
+  }
+  else
+  {
+    Neural* neural = new Neural();
+    neural->weights = neural_msg.weights.data;
+    neural->config = neural_msg.config.data;
+
+    return neural;
+  }
+}
+
 namespace
 {
 class ShapeVisitorAlloc : public boost::static_visitor<Shape*>
@@ -129,6 +146,11 @@ public:
   Shape* operator()(const shape_msgs::msg::SolidPrimitive& shape_msg) const
   {
     return constructShapeFromMsg(shape_msg);
+  }
+
+  Shape* operator()(const shape_msgs::msg::Network & neural_msg) const
+  {
+    return constructShapeFromMsg(neural_msg);
   }
 };
 }  // namespace
