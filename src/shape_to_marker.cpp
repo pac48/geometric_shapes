@@ -124,3 +124,10 @@ void geometric_shapes::constructMarkerFromShape(const shape_msgs::msg::Mesh& sha
     }
   }
 }
+
+void geometric_shapes::constructMarkerFromShape(const shape_msgs::msg::Network& network_msg,
+                                                visualization_msgs::msg::Marker& mk)
+{
+  // TODO(pac48)
+
+}

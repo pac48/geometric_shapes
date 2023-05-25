@@ -31,6 +31,7 @@
 
 #include <shape_msgs/msg/solid_primitive.hpp>
 #include <shape_msgs/msg/mesh.hpp>
+#include <shape_msgs/msg/network.hpp>
 #include <visualization_msgs/msg/marker.hpp>
 
 namespace geometric_shapes
@@ -48,6 +49,9 @@ void constructMarkerFromShape(const shape_msgs::msg::Mesh& shape_msg, visualizat
     On incorrect input, this function throws a std::runtime_error. */
 void constructMarkerFromShape(const shape_msgs::msg::SolidPrimitive& shape_msg,
                               visualization_msgs::msg::Marker& marker);
+
+void constructMarkerFromShape(const shape_msgs::msg::Network& network_msg,
+                                                visualization_msgs::msg::Marker& mk);
 }  // namespace geometric_shapes
 
 #endif

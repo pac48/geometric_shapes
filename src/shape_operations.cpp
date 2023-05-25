@@ -185,6 +185,11 @@ public:
     geometric_shapes::constructMarkerFromShape(shape_msg, *marker_);
   }
 
+  void operator()(const shape_msgs::msg::Network& network_msg) const
+  {
+    geometric_shapes::constructMarkerFromShape(network_msg, *marker_);
+  }
+
 private:
   bool use_mesh_triangle_list_;
   visualization_msgs::msg::Marker* marker_;
@@ -235,6 +240,16 @@ public:
   {
     double x_extent, y_extent, z_extent;
     geometric_shapes::getShapeExtents(shape_msg, x_extent, y_extent, z_extent);
+    Eigen::Vector3d e(x_extent, y_extent, z_extent);
+    return e;
+  }
+
+  Eigen::Vector3d operator()(const shape_msgs::msg::Network & network_msg) const
+  {
+    double x_extent = 0;
+    double y_extent = 0;
+    double z_extent = 0;
+//    geometric_shapes::getShapeExtents(shape_msg, x_extent, y_extent, z_extent); TODO(pac48)
     Eigen::Vector3d e(x_extent, y_extent, z_extent);
     return e;
   }
@@ -434,6 +449,14 @@ bool constructMsgFromShape(const Shape* shape, ShapeMsg& shape_msg)
       s.triangles[i].vertex_indices[2] = mesh->triangles[i3 + 2];
     }
     shape_msg = s;
+  }
+  else if (shape->type == NEURAL)
+  {
+    shape_msgs::msg::Network n;
+    const Neural* neural = static_cast<const Neural*>(shape);
+    n.config.data = neural->config;
+    n.weights.data = neural->weights;
+    shape_msg = n;
   }
   else
   {

@@ -642,5 +642,7 @@ Neural* Neural::clone() const
 }
 Neural::Neural()
 {
+  type = NEURAL;
 }
+
 } /* namespace shapes */
