@@ -620,4 +620,20 @@ void Mesh::mergeVertices(double threshold)
     computeVertexNormals();
 }
 
+void Neural::print(std::ostream& out) const
+{
+  Shape::print(out);
+}
+bool Neural::isFixed() const{
+  return true;
+}
+void Neural::scaleAndPadd(double scale, double padd)
+{
+  CONSOLE_BRIDGE_logWarn("Neural cannot be scaled or padded");
+}
+Neural* Neural::clone() const
+{
+  CONSOLE_BRIDGE_logWarn("Neural cannot cloned");
+  return nullptr;
+}
 } /* namespace shapes */

@@ -49,6 +49,9 @@ Shape* constructShapeFromMsg(const shape_msgs::msg::Plane& shape_msg);
 Shape* constructShapeFromMsg(const shape_msgs::msg::Mesh& shape_msg);
 
 /** \brief Construct the shape that corresponds to the message. Return NULL on failure. */
+Shape* constructShapeFromMsg(const shape_msgs::msg::Neural& shape_msg);
+
+/** \brief Construct the shape that corresponds to the message. Return NULL on failure. */
 Shape* constructShapeFromMsg(const ShapeMsg& shape_msg);
 
 /** \brief Construct the message that corresponds to the shape. Return false on failure. */

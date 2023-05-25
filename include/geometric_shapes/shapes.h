@@ -57,7 +57,8 @@ enum ShapeType
   BOX,
   PLANE,
   MESH,
-  OCTREE
+  OCTREE,
+  NEURAL
 };
 
 /* convert above enum to printable */
@@ -388,6 +389,23 @@ public:
 
   std::shared_ptr<const octomap::OcTree> octree;
 };
+
+/** \brief Representation of an network as a Shape */
+class Neural : public Shape
+{
+public:
+  Neural();
+
+  /** \brief The type of the shape, as a string */
+  static const std::string STRING_NAME;
+
+  Neural* clone() const override;
+  void print(std::ostream& out = std::cout) const override;
+  void scaleAndPadd(double scale, double padd) override;
+  bool isFixed() const override;
+
+};
+
 
 /** \brief Shared pointer to a Shape */
 typedef std::shared_ptr<Shape> ShapePtr;
