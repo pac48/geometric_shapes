@@ -129,5 +129,9 @@ void geometric_shapes::constructMarkerFromShape(const shape_msgs::msg::Network& 
                                                 visualization_msgs::msg::Marker& mk)
 {
   // TODO(pac48)
+  mk.type = visualization_msgs::msg::Marker::CUBE;
+  mk.scale.x = network_msg.aabb[0];
+  mk.scale.y = network_msg.aabb[1];
+  mk.scale.z = network_msg.aabb[2];
 
 }
